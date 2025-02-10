@@ -1,0 +1,44 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp4"
+             x:Class="MauiApp4.MainPage">
+    <ContentPage.BindingContext>
+        <local:ProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FF7F50" Offset="0" />
+            <GradientStop Color="#FF1493" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout Padding="20">
+
+        <!-- Profile Picture -->
+        <Frame HeightRequest="150" WidthRequest="150" CornerRadius="75" Padding="0" HasShadow="True">
+            <Image x:Name="ProfileImage" Aspect="AspectFill" Source="{Binding ProfilePicture}" />
+        </Frame>
+        <Button Text="Select Profile Picture" Command="{Binding PickPhotoCommand}"/>
+
+        <!-- Name -->
+        <Label Text="Name" />
+        <Entry x:Name="NameEntry" Placeholder="Enter your name" Text="{Binding Name}"/>
+
+        <!-- Surname -->
+        <Label Text="Surname" />
+        <Entry x:Name="SurnameEntry" Placeholder="Enter your surname" Text="{Binding Surname}"/>
+
+        <!-- Email -->
+        <Label Text="Email Address" />
+        <Entry x:Name="EmailEntry" Placeholder="Enter your email" Text="{Binding Email}"/>
+
+        <!-- Bio -->
+        <Label Text="Bio" />
+        <Editor x:Name="BioEditor" Placeholder="Write about yourself" HeightRequest="100" Text="{Binding Bio}"/>
+
+        <!-- Save Button -->
+        <Button Text="Save Profile" Command="{Binding SaveProfileCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>
